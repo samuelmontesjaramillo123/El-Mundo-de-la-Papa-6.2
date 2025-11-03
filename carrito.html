@@ -46,8 +46,10 @@
       <button id="vaciar-carrito" class="btn-vaciar">Vaciar Carrito</button>
     </div>
     <!-- Botón para confirmar compra -->
+<!-- Botones de acción -->
 <div class="confirmar-compra">
   <button id="confirmar-btn" class="btn-confirmar">Confirmar compra</button>
+  <button id="cancelar-btn" class="btn-cancelar" style="display:none;">Cancelar compra</button>
 </div>
 
 <!-- Sección de método de pago (oculta al inicio) -->
@@ -61,6 +63,7 @@
     <button type="submit" class="btn-finalizar">Finalizar compra</button>
   </form>
 </section>
+
   </main>
 
   <script>
@@ -182,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const confirmarBtn = document.getElementById("confirmar-btn");
+  const cancelarBtn = document.getElementById("cancelar-btn");
   const metodoPago = document.getElementById("metodo-pago");
   const formPago = document.getElementById("form-pago");
 
@@ -190,18 +194,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Al dar clic en confirmar compra
   confirmarBtn.addEventListener("click", () => {
-    // Mostrar la sección de método de pago con transición suave
     metodoPago.style.display = "block";
-    metodoPago.style.opacity = "0";
-    metodoPago.style.transition = "opacity 0.6s ease";
-    setTimeout(() => metodoPago.style.opacity = "1", 50);
+    metodoPago.classList.add("mostrar");
 
-    // Desactivar el botón para que no se presione más de una vez
+    // Mostrar botón cancelar
+    cancelarBtn.style.display = "inline-block";
+
+    // Desactivar el botón de confirmar
     confirmarBtn.disabled = true;
     confirmarBtn.textContent = "Mostrando opciones de pago...";
   });
 
-  // Cuando se envía el formulario
+  // Botón para cancelar la compra
+  cancelarBtn.addEventListener("click", () => {
+    metodoPago.classList.remove("mostrar");
+    setTimeout(() => {
+      metodoPago.style.display = "none";
+    }, 500); // esperar que termine la animación
+
+    // Rehabilitar confirmar y ocultar cancelar
+    confirmarBtn.disabled = false;
+    confirmarBtn.textContent = "Confirmar compra";
+    cancelarBtn.style.display = "none";
+  });
+
+  // Cuando se envía el formulario (finaliza la compra)
   formPago.addEventListener("submit", (e) => {
     e.preventDefault();
 
