@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://samuelmontesjaramillo123.github.io/El-Mundo-de-la-Papa-6.2/sitemap.xml

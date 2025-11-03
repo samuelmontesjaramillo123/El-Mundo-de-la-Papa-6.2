@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://samuelmontesjaramillo123.github.io/El-Mundo-de-la-Papa-6.2/</loc>
     <lastmod>2025-11-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <url>
+    <loc>https://samuelmontesjaramillo123.github.io/El-Mundo-de-la-Papa-6.2/mision.html</loc>
+  </url>
+
+  <url>
+    <loc>https://samuelmontesjaramillo123.github.io/El-Mundo-de-la-Papa-6.2/vision.html</loc>
+  </url>
+
+  <url>
+    <loc>https://samuelmontesjaramillo123.github.io/El-Mundo-de-la-Papa-6.2/medioambiente.html</loc>
+  </url>
+
+  <url>
+    <loc>https://samuelmontesjaramillo123.github.io/El-Mundo-de-la-Papa-6.2/productos.html</loc>
+  </url>
+
+  <url>
+    <loc>https://samuelmontesjaramillo123.github.io/El-Mundo-de-la-Papa-6.2/carrito.html</loc>
+  </url>
+
+  <url>
+    <loc>https://samuelmontesjaramillo123.github.io/El-Mundo-de-la-Papa-6.2/formulario.html</loc>
+  </url>
+
+  <url>
+    <loc>https://samuelmontesjaramillo123.github.io/El-Mundo-de-la-Papa-6.2/tabla.html</loc>
+  </url>
+
 </urlset>
