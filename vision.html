@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Señor Papa </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <header>
+  <div class="header-content">
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="img general/logo.PNG" alt="Logo Señor Papa" class="logo">
+      </a>
+      <h1>EL SEÑOR PAPA</h1>
+    </div>
+
+    <!-- Botón de menú hamburguesa -->
+    <button class="menu-toggle" aria-label="Abrir menú">☰</button>
+
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html" class="activo">Inicio</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="tabla.html">Tabla</a></li>
+        <li><a href="formulario.html">Reservación</a></li>
+        <li><a href="mision.html">Nuestra Misión</a></li>
+        <li><a href="medioambiente.html">Plan Ambiental</a></li>
+        <li><a href="vision.html">Nuestra Visión</a></li>
+        <li class="carrito-icono">
+          <a href="carrito.html">🛒 <span id="contador-carrito">0</span></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+    <section>
+      
+        <h2>Nuestra Visión Con El Señor Papa</h2>
+        <div class="Objetivos2">
+        <article>
+          <ul>
+            <p>“Ser reconocidos como el referente gastronómico que transforma la papa en una experiencia única de sabor, innovación y sostenibilidad.</p>
+            <p>Buscamos conquistar corazones y paladares a través de la creatividad culinaria, promoviendo el amor por los productos naturales, el respeto por el campo y la inspiración para cuidar el planeta mientras disfrutamos de cada bocado.</p>
+            </ul>
+            </div>
+        </article>
+    </section>
+</main>
+<footer>
+    <p>Samuel Montes, Felipe Riascos y Laurenth Valencia | El mundo de las Papas</p>
+   </footer>
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const span = document.getElementById('contador-carrito');
+
+  function contarDesdeLocalStorage() {
+    const raw = localStorage.getItem('carrito');
+    if (!span) return; // si no existe el span no hacemos nada
+
+    if (!raw) {
+      span.textContent = 0;
+      return 0;
+    }
+
+    try {
+      const data = JSON.parse(raw);
+
+      let total = 0;
+      if (Array.isArray(data)) {
+        // array de objetos {nombre, precio, cantidad} o array de strings
+        if (data.length && typeof data[0] === 'object') {
+          total = data.reduce((s, it) => s + (parseInt(it.cantidad) || 0), 0);
+        } else {
+          // array simple (nombres) -> contamos elementos
+          total = data.length;
+        }
+      } else if (data && typeof data === 'object') {
+        // quizá guardaste { items: [...] }
+        if (Array.isArray(data.items)) {
+          total = data.items.reduce((s, it) => s + (parseInt(it.cantidad) || 0), 0);
+        } else {
+          total = 0;
+        }
+      } else {
+        total = 0;
+      }
+
+      span.textContent = total;
+      return total;
+    } catch (err) {
+      // si no es JSON válido, intenta contar por seguridad
+      span.textContent = 0;
+      return 0;
+    }
+  }
+
+  // Inicializa contador al cargar la página
+  contarDesdeLocalStorage();
+
+  // Escucha cambios en localStorage desde otras pestañas
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'carrito') {
+      contarDesdeLocalStorage();
+    }
+  });
+});
+</script>
+<script>
+  // Botón hamburguesa: abrir/cerrar menú
+  const menuToggle = document.querySelector(".menu-toggle");
+  const menu = document.querySelector(".menu");
+
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("mostrar");
+  });
+</script>
+
+   </body>
+</html>
