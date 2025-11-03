@@ -898,3 +898,71 @@ th, td {
 .btn-cancelar:hover {
   background-color: #aaa;
 }
+/* --- Asegurar visibilidad y responsividad del botón cancelar --- */
+.confirmar-compra {
+  display: flex;
+  flex-wrap: wrap; /* permite que los botones bajen si no hay espacio */
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-confirmar,
+.btn-cancelar {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Colores para mantener la identidad visual de El Señor Papa */
+.btn-confirmar {
+  background-color: #ffcc00;
+  color: #222;
+  border: none;
+}
+
+.btn-confirmar:hover {
+  background-color: #ffd633;
+}
+
+/* Cancelar: tonos neutros */
+.btn-cancelar {
+  background-color: #ccc;
+  color: #222;
+  border: none;
+}
+
+.btn-cancelar:hover {
+  background-color: #aaa;
+}
+
+/* --- Ajuste para pantallas pequeñas (celulares) --- */
+@media (max-width: 600px) {
+  .confirmar-compra {
+    flex-direction: column; /* los botones uno debajo del otro */
+    align-items: center;
+  }
+
+  .btn-confirmar,
+  .btn-cancelar {
+    width: 90%;
+    font-size: 18px;
+  }
+
+  #metodo-pago {
+    width: 90%;
+    padding: 15px;
+  }
+}
+#metodo-pago {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#metodo-pago.mostrar {
+  opacity: 1;
+  transform: translateY(0);
+}
