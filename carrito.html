@@ -45,6 +45,22 @@
       <p><strong>Total:</strong> $<span id="total">0</span></p>
       <button id="vaciar-carrito" class="btn-vaciar">Vaciar Carrito</button>
     </div>
+    <!-- Botón para confirmar compra -->
+<div class="confirmar-compra">
+  <button id="confirmar-btn" class="btn-confirmar">Confirmar compra</button>
+</div>
+
+<!-- Sección de método de pago (oculta al inicio) -->
+<section id="metodo-pago" style="display: none; margin-top: 20px;">
+  <h2>💳 Selecciona tu método de pago</h2>
+
+  <form id="form-pago">
+    <label><input type="radio" name="pago" value="tarjeta" required> Tarjeta de crédito / débito</label><br>
+    <label><input type="radio" name="pago" value="efectivo"> Efectivo</label><br>
+    <label><input type="radio" name="pago" value="transferencia"> Transferencia bancaria</label><br><br>
+    <button type="submit" class="btn-finalizar">Finalizar compra</button>
+  </form>
+</section>
   </main>
 
   <script>
@@ -163,6 +179,48 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.classList.toggle("mostrar");
   });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const confirmarBtn = document.getElementById("confirmar-btn");
+  const metodoPago = document.getElementById("metodo-pago");
+  const formPago = document.getElementById("form-pago");
 
+  // Ocultamos la sección al inicio
+  metodoPago.style.display = "none";
+
+  // Al dar clic en confirmar compra
+  confirmarBtn.addEventListener("click", () => {
+    // Mostrar la sección de método de pago con transición suave
+    metodoPago.style.display = "block";
+    metodoPago.style.opacity = "0";
+    metodoPago.style.transition = "opacity 0.6s ease";
+    setTimeout(() => metodoPago.style.opacity = "1", 50);
+
+    // Desactivar el botón para que no se presione más de una vez
+    confirmarBtn.disabled = true;
+    confirmarBtn.textContent = "Mostrando opciones de pago...";
+  });
+
+  // Cuando se envía el formulario
+  formPago.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const metodo = document.querySelector('input[name="pago"]:checked').value;
+
+    metodoPago.innerHTML = `
+      <div class="mensaje-final" style="text-align:center; margin-top:20px;">
+        <h2>🎉 ¡Gracias por tu compra!</h2>
+        <p>Has elegido pagar con <strong>${metodo}</strong>.</p>
+        <p>Tu pedido será procesado pronto 🥔💛</p>
+        <a href="index.html" class="btn-volver">Volver al inicio</a>
+      </div>
+    `;
+
+    // Limpia el carrito después del pago
+    localStorage.removeItem("carrito");
+    document.getElementById("contador-carrito").textContent = "0";
+  });
+});
+</script>
 </body>
 </html>

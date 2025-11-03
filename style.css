@@ -805,3 +805,82 @@ th, td {
     width: 50%;
   }
 }
+/* === Botones de Confirmar y Finalizar === */
+.btn-confirmar, .btn-finalizar, .btn-volver {
+  background-color: #ff7b00; /* naranja principal */
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.btn-confirmar:hover, .btn-finalizar:hover, .btn-volver:hover {
+  background-color: #e96a00; /* tono más oscuro */
+  transform: scale(1.05);
+}
+
+/* === Sección de método de pago === */
+#metodo-pago {
+  background-color: #fff4e6; /* fondo suave naranja */
+  border: 2px solid #ff7b00;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: left;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* === Mensaje final === */
+.mensaje-final {
+  text-align: center;
+  background-color: #fffaf5;
+  border: 2px solid #ff7b00;
+  border-radius: 15px;
+  padding: 30px;
+}
+
+.mensaje-final h2 {
+  color: #ff7b00;
+  margin-bottom: 10px;
+}
+
+.btn-volver {
+  display: inline-block;
+  margin-top: 15px;
+  text-decoration: none;
+}
+.confirmar-compra {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-confirmar, .btn-finalizar {
+  background-color: #ffb300;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-confirmar:hover, .btn-finalizar:hover {
+  background-color: #e08a00;
+  transform: scale(1.05);
+}
+
+#metodo-pago {
+  background-color: #fff7d1;
+  border: 2px solid #ffcc00;
+  border-radius: 15px;
+  padding: 20px;
+  width: 60%;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
